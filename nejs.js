@@ -2,16 +2,16 @@
 // Licensed under GNU General Public License v3
 // Made by @codemob-dev and @ReallyBadDeveloper
 
-var file = null;
+var asciiDecoder = new TextDecoder("ASCII");
 document.getElementById("filetoload").addEventListener("change", ev=>{
     let filereader = new FileReader();
     filereader.onload = function (frEvent) {
         if (filereader.result.byteLength) {
-            var signature = filereader.result.slice(0, 5);
-            console.log(`signature = ${signature}`);
-            if (signature == "NES\x1A") {
+            var signature = asciiDecoder.decode(filereader.result.slice(0, 4));
+
+            if (signature.toString() == "NES\x1A") {
                 file = ev.target.files[0];
-                load();
+                load(filereader.result, ev.target.files[0]);
             } else {
                 wrongformat();
             }
@@ -21,7 +21,7 @@ document.getElementById("filetoload").addEventListener("change", ev=>{
     filereader.readAsArrayBuffer(ev.target.files[0]);
 });
 
-function load() {
+function load(arraybuffer, file) {
     console.log("Loaded!");
 }
 function wrongformat() {
