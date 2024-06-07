@@ -4,10 +4,10 @@
 
 var file = null;
 document.getElementById("filetoload").addEventListener("change", ev=>{
-    let fr = new FileReader();
-    fr.onload = function () {
-        if (fr.result.byteLength) {
-            var signature = fr.result.slice(0, 5);
+    let filereader = new FileReader();
+    filereader.onload = function (frEvent) {
+        if (filereader.result.byteLength) {
+            var signature = filereader.result.slice(0, 5);
             if (signature == "NES\x1A") {
                 file = ev.target.files[0];
                 load();
@@ -17,12 +17,12 @@ document.getElementById("filetoload").addEventListener("change", ev=>{
         }
     }
 
-    fr.readAsArrayBuffer(ev.target.files[0]);
+    filereader.readAsArrayBuffer(ev.target.files[0]);
 });
 
 function load() {
-
+    console.log("Loaded!");
 }
 function wrongformat() {
-
+    console.log("Wrong format!");
 }
