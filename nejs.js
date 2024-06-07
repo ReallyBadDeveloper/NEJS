@@ -9,7 +9,7 @@ document.getElementById("filetoload").addEventListener("change", ev=>{
         if (fr.result.byteLength) {
             var signature = fr.result.slice(0, 5);
             if (signature == "NES\x1A") {
-                file = fr.result;
+                file = ev.target.files[0];
                 load();
             } else {
                 wrongformat();
@@ -17,7 +17,7 @@ document.getElementById("filetoload").addEventListener("change", ev=>{
         }
     }
 
-    fr.readAsArrayBuffer(this.files[0]);
+    fr.readAsArrayBuffer(ev.target.files[0]);
 });
 
 function load() {
