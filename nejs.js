@@ -17,7 +17,7 @@ document.getElementById("filetoload").addEventListener("change", ev=>{
         }
     }
 
-    fr.readAsArrayBuffer();
+    fr.readAsArrayBuffer(this.files[0]);
 });
 
 function load() {
