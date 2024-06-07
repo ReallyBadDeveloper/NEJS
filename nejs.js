@@ -8,6 +8,7 @@ document.getElementById("filetoload").addEventListener("change", ev=>{
     filereader.onload = function (frEvent) {
         if (filereader.result.byteLength) {
             var signature = filereader.result.slice(0, 5);
+            console.log(`signature = ${signature}`);
             if (signature == "NES\x1A") {
                 file = ev.target.files[0];
                 load();
