@@ -2,6 +2,7 @@
 // Licensed under GNU General Public License v3
 // Made by @codemob-dev and @ReallyBadDeveloper
 
+
 var asciiDecoder = new TextDecoder("ASCII");
 document.getElementById("filetoload").addEventListener("change", ev=>{
     let filereader = new FileReader();
@@ -21,7 +22,16 @@ document.getElementById("filetoload").addEventListener("change", ev=>{
     filereader.readAsArrayBuffer(ev.target.files[0]);
 });
 
+var loadedData = null;
 function load(arraybuffer, file) {
+    var uint8buffer = new Uint8Array(arraybuffer);
+    var dataview = new DataView(arraybuffer);
+    var PRGROM = dataview.getUint8(4);
+    var CHRROM = dataview.getUint8(5);
+    var usesCHRRAM = CHRROM == 0;
+    var flags6 = dataview.getUint8(6);
+
+    console.log(PRGROM, CHRROM, usesCHRRAM, flags6);
     console.log("Loaded!");
 }
 function wrongformat() {
