@@ -1,95 +1,95 @@
 @font-face {
-  font-family: "PressStart2P";
-  src: url("./media/PressStart2P.ttf");
+font-family: "PressStart2P";
+src: url("./media/PressStart2P.ttf");
 }
 
 body {
-  padding: 0px;
-  margin: 0px;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "PressStart2P", sans-serif;
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "PressStart2P", sans-serif;
 }
 
 body * {
-  font-family: "PressStart2P", sans-serif;
+    font-family: "PressStart2P", sans-serif;
 }
 
 .loadFile {
-  display: block;
-  margin: 0;
-  padding: 10px;
-  background-color: #ade874;
-  box-shadow: 0px 10px 0px 0px #7eaa55, 0px 17px 0px 0px #00000028;
-  transform: translateY(-10px);
-  cursor: pointer;
-  color: #ffffff;
-  border-radius: 10px;
-  transition-duration: 0.3s;
+    display: block;
+    margin: 0;
+    padding: 10px;
+    background-color: #ade874;
+    box-shadow: 0px 10px 0px 0px #7eaa55, 0px 17px 0px 0px #00000028;
+    transform: translateY(-10px);
+    cursor: pointer;
+    color: #ffffff;
+    border-radius: 10px;
+    transition-duration: 0.3s;
 }
 
 .loadFile:hover {
-  box-shadow: 0px 15px 0px 0px #7eaa55, 0px 27px 0px 0px #00000028;
-  transform: translateY(-15px) !important;
+    box-shadow: 0px 15px 0px 0px #7eaa55, 0px 27px 0px 0px #00000028;
+    transform: translateY(-15px) !important;
 }
 
 .loadFile:active {
-  box-shadow: 0px 3px 0px 0px #7eaa55, 0px 5px 0px 0px #00000028;
-  transform: translateY(-3px) !important;
+    box-shadow: 0px 3px 0px 0px #7eaa55, 0px 5px 0px 0px #00000028;
+    transform: translateY(-3px) !important;
 }
 
 #debughandle {
-  position: fixed;
-  bottom: 0;
-  left: 10px;
-  cursor: pointer;
-  padding: 10px;
-  background-color: black;
-  color: white;
-  border-radius: 10px 10px 0px 0px;
-  transition-duration: 0.3s;
+    position: fixed;
+    bottom: 0;
+    left: 10px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+    transition-duration: 0.3s;
 }
 #debughandle * {
-  user-select: none;
+    user-select: none;
 }
 #debug {
-  overflow-y: scroll;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  height: 200px;
-  width: 100vw;
-  background-color: black;
-  color: white;
-  padding: 10px;
-  transform: translateY(220px);
-  font-family: monospace;
-  transition-duration: 0.3s;
+    overflow-y: scroll;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 200px;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    transform: translateY(220px);
+    font-family: monospace;
+    transition-duration: 0.3s;
 }
 
 .log-entry {
-  font-size: 8px;
+    font-size: 8px;
 }
 
 .log-type-log {
-  color: rgb(233, 233, 233);
+    color: rgb(233, 233, 233);
 }
 
 .log-type-info {
-  color: rgb(83, 83, 83);
+    color: rgb(83, 83, 83);
 }
 
 .log-type-debug {
-  color: rgb(58, 58, 58);
+    color: rgb(58, 58, 58);
 }
 
 .log-type-error {
-  color: rgb(202, 37, 37);
+    color: rgb(202, 37, 37);
 }
 
 .log-type-warn {
-  color: rgb(192, 176, 31);
+    color: rgb(192, 176, 31);
 }

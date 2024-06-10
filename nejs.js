@@ -69,7 +69,7 @@ function onloadsuccess(arraybuffer, file) {
     }
 
     console.log("Loaded!");
-    console.debug(loadedData);
+    console.debug(JSON.stringify(loadedData, null, 4));
 }
 
 function onloadwrongformat() {
