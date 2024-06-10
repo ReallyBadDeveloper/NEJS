@@ -17,7 +17,7 @@ document.getElementById("filetoload").addEventListener("change", ev=>{
 
             if (signature.toString() == "NES\x1A") {
                 file = ev.target.files[0];
-                onload(filereader.result, ev.target.files[0]);
+                onloadsuccess(filereader.result, ev.target.files[0]);
             } else {
                 onloadwrongformat();
             }
