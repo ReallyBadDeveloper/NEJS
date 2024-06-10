@@ -33,7 +33,7 @@
             let output = document.getElementById("debug");
 
             var logElem = document.createElement("pre");
-            logElem.innerText = text;
+            logElem.innerText = `[CONSOLE_${type.toUpperCase()} - ${new Date().toLocaleTimeString()}] ` + text;
             logElem.classList.add("log-entry");
             logElem.classList.add("log-type-" + type);
             output.appendChild(logElem);
