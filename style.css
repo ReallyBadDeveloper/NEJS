@@ -93,3 +93,23 @@ body * {
 .log-type-warn {
     color: rgb(192, 176, 31);
 }
+
+.skrompt {
+  height: 64px;
+  width: 64px;
+  background: url('./media/skrompt.png');
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-size: cover;
+  animation: spin 1s linear 0s infinite forwards;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
