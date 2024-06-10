@@ -23,7 +23,7 @@ body * {
   margin: 0;
   padding: 10px;
   background-color: #ade874;
-  box-shadow: 0px 10px 0px 0px #7eaa55;
+  box-shadow: 0px 10px 0px 0px #7eaa55, 0px 17px 0px 0px #00000028;
   transform: translateY(-10px);
   cursor: pointer;
   color: #ffffff;
@@ -32,13 +32,13 @@ body * {
 }
 
 .loadFile:hover {
-  box-shadow: 0px 15px 0px 0px #7eaa55;
+  box-shadow: 0px 15px 0px 0px #7eaa55, 0px 27px 0px 0px #00000028;
   transform: translateY(-15px) !important;
 }
 
 .loadFile:active {
-  box-shadow: 0px 0px 0px 0px #7eaa55;
-  transform: translateY(-0px) !important;
+  box-shadow: 0px 3px 0px 0px #7eaa55, 0px 5px 0px 0px #00000028;
+  transform: translateY(-3px) !important;
 }
 
 #debughandle {
