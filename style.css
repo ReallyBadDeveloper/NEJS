@@ -68,3 +68,23 @@ body * {
   font-family: monospace;
   transition-duration: 0.3s;
 }
+
+.log-entry {
+  font-size: 8px;
+}
+
+.log-type-log {
+  color: rgb(233, 233, 233);
+}
+
+.log-type-info {
+  color: rgb(83, 83, 83);
+}
+
+.log-type-error {
+  color: rgb(202, 37, 37);
+}
+
+.log-type-warn {
+  color: rgb(192, 176, 31);
+}

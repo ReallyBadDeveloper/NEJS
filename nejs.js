@@ -72,6 +72,6 @@ function onloadsuccess(arraybuffer, file) {
 }
 
 function onloadwrongformat() {
-    console.log("Wrong format!");
+    console.warn("Wrong format!");
 }
 // --------------------------------------------
