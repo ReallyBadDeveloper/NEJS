@@ -36,14 +36,14 @@ const nametableModes = Object.freeze({
 let loadedData = null;
 function onloadsuccess(arraybuffer, file) {
     let dataview = new DataView(arraybuffer);
-    let PRGROM = dataview.getUint8(4);
-    let CHRROM = dataview.getUint8(5);
-    let usesCHRRAM = CHRROM == 0;
+    let PRGROMsize = dataview.getUint8(4);
+    let CHRROMsize = dataview.getUint8(5);
+    let usesCHRRAM = CHRROMsize == 0;
     let flags6 = dataview.getUint8(6);
 
     let verticalMirroring = getBitOfNum(flags6, 0);
     let batteryBackedPRGRAM = getBitOfNum(flags6, 1);
-    let trainer = getBitOfNum(flags6, 2);
+    let hasTrainer = getBitOfNum(flags6, 2);
 
     let altNametable = getBitOfNum(flags6, 3);
     let nametableMode = altNametable 
@@ -58,18 +58,39 @@ function onloadsuccess(arraybuffer, file) {
 
     mapperNum |= flags7 & 0b11110000;
 
-    let PRGRAM = dataview.getUint8(8);
+    let PRGRAMsize = dataview.getUint8(8);
 
-    PRGRAM = PRGRAM == 0 ? 1 : PRGRAM;
+    PRGRAMsize = PRGRAMsize == 0 ? 1 : PRGRAMsize;
+
+    var pos = 16;
+
+    let trainer = null;
+    if (hasTrainer) {
+        trainer = new DataView(pos, 512)
+        pos += 512
+    }
+
+    let PRGROM = new DataView(pos, 16384 * PRGROMsize);
+    pos += 16384 * PRGROMsize;
+
+    let CHRROM = null;
+    if (!usesCHRRAM) {
+        CHRROM = new DataView(pos, 8192 * CHRROMsize);
+        pos += 8192 * CHRROMsize;
+    }
 
     loadedData = {
-        PRGROM, // size of PRGROM in 16KB banks
-        CHRROM, // size of CHRROM in 8KB banks
-        usesCHRRAM, // the board uses CHRRAM instead of CHRROM
-        batteryBackedPRGRAM, // the board uses battery backed PRGRAM
-        nametableMode, // the mirror mode of the nametable, one of nametableModes
-        mapperNum, // the mapper number: https://www.nesdev.org/wiki/List_of_mappers
-        PRGRAM // size of PRGRAM in 8KB units
+        PRGROMsize, // Size of PRGROM in 16KB banks
+        CHRROMsize, // Size of CHRROM in 8KB banks
+        usesCHRRAM, // The board uses CHRRAM instead of CHRROM
+        batteryBackedPRGRAM, // The board uses battery backed PRGRAM
+        hasTrainer, // The board has a 512 byte trainer
+        nametableMode, // The mirror mode of the nametable, one of nametableModes
+        mapperNum, // The mapper number: https://www.nesdev.org/wiki/List_of_mappers
+        PRGRAMsize, // Size of PRGRAM in 8KB units
+        trainer, // Trainer data
+        PRGROM, // Program ROM
+        CHRROM, // Character ROM
     }
 
     console.log("Loaded!");
