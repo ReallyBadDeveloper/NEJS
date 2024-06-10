@@ -1,34 +1,63 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="icon" type="image/x-icon" href="./media/nejsicon.ico">
-    <link rel="stylesheet" href="style.css">
-    <title>NEJS Demo</title>
-  </head>
-  <body>
-    <div>
-      <label for="filetoload" class="loadFile">Load</label
-      ><input style="display: none" type="file" id="filetoload" />
-    </div>
-    <div id="debughandle">Debug Info</div>
-    <div id="debug">
-      [CONSOLE - HH:MM:SS]: This is a test, ignore this. 
-    </div>
+    <head>
+        <link rel="icon" type="image/x-icon" href="./media/nejsicon.ico">
+        <link rel="stylesheet" href="style.css">
+        <title>NEJS Demo</title>
+    </head>
+    <body>
+        <div>
+        <label for="filetoload" class="loadFile">Load</label
+        ><input style="display: none" type="file" id="filetoload" />
+        </div>
+        <div id="debughandle">Debug Info</div>
+        <div id="debug">
+        </div>
 
-    <script src="nejs.js"></script>
-    <script>
-      var debugOpen = false;
-      document.getElementById('debughandle').addEventListener('click',() => {
-        if (!debugOpen) {
-          document.getElementById('debug').style.transform = 'translateY(0px)';
-          document.getElementById('debughandle').style.transform = 'translateY(-220px)';
-          debugOpen = true;
-        } else {
-          document.getElementById('debug').style.transform = 'translateY(220px)';
-          document.getElementById('debughandle').style.transform = 'translateY(0px)';
-          debugOpen = false;
+        <script src="nejs.js"></script>
+        <script>
+        var debugOpen = false;
+        document.getElementById('debughandle').addEventListener('click',() => {
+            if (!debugOpen) {
+                document.getElementById('debug').style.transform = 'translateY(0px)';
+                document.getElementById('debughandle').style.transform = 'translateY(-220px)';
+                debugOpen = true;
+            } else {
+                document.getElementById('debug').style.transform = 'translateY(220px)';
+                document.getElementById('debughandle').style.transform = 'translateY(0px)';
+                debugOpen = false;
+            }
+        });
+
+        function msg(text, type) {
+            let output = document.getElementById("debug");
+
+            var logElem = document.createElement("pre");
+            logElem.innerText = text;
+            logElem.classList.add("log-entry");
+            logElem.classList.add("log-type-" + type);
+            output.appendChild(logElem);
         }
-      })
-    </script>
-  </body>
+        let oldLog = console.log;
+        console.log = (message) => {
+            oldLog(message);
+            msg(message, "log");
+        };
+        let oldInfo = console.info;
+        console.info = (message) => {
+            oldLog(message);
+            msg(message, "info");
+        };
+        let oldError = console.error;
+        console.error = (message) => {
+            oldLog(message);
+            msg(message, "error");
+        };
+        let oldWarn = console.warn;
+        console.warn = (message) => {
+            oldLog(message);
+            msg(message, "warn");
+        };
+        </script>
+    </body>
 </html>
