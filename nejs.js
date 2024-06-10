@@ -27,11 +27,11 @@ document.getElementById("filetoload").addEventListener("change", ev=>{
     filereader.readAsArrayBuffer(ev.target.files[0]);
 });
 
-const nametableModes = {
-    HORIZONTAL_MIRROR: 0,
-    VERTICAL_MIRROR: 1,
-    FOUR_SCREEN: 2
-}
+const nametableModes = Object.freeze({
+    HORIZONTAL_MIRROR: Symbol("Horizontal Mirror"),
+    VERTICAL_MIRROR: Symbol("Vertical Mirror"),
+    FOUR_SCREEN: Symbol("Four Screen")
+});
 
 let loadedData = null;
 function onloadsuccess(arraybuffer, file) {
@@ -46,7 +46,11 @@ function onloadsuccess(arraybuffer, file) {
     let trainer = getBitOfNum(flags6, 2);
 
     let altNametable = getBitOfNum(flags6, 3);
-    let nametableMode = altNametable ? nametableModes.FOUR_SCREEN : +verticalMirroring;
+    let nametableMode = altNametable 
+                        ? nametableModes.FOUR_SCREEN 
+                        : (verticalMirroring 
+                            ? nametableModes.VERTICAL_MIRROR 
+                            : nametableModes.HORIZONTAL_MIRROR);
 
     let mapperNum = flags6 >> 4;
 
