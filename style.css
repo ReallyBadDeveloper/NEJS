@@ -95,14 +95,23 @@ body * {
 }
 
 .skrompt {
-  height: 64px;
-  width: 64px;
+  height: 128px;
+  width: 128px;
   background: url('./media/skrompt.png');
   position: fixed;
   bottom: 0;
   right: 0;
+  transform: translate(45%, 65%);
   background-size: cover;
-  animation: spin 1s linear 0s infinite forwards;
+  opacity: 50%;
+  transition: all 1.5s;
+}
+
+.skrompt:hover {
+    height: 192px;
+    width: 192px;
+    transform: translate(15%, 25%);
+    opacity: 100%;
 }
 
 @keyframes spin {
