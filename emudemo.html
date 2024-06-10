@@ -45,17 +45,22 @@
         };
         let oldInfo = console.info;
         console.info = (message) => {
-            oldLog(message);
+            oldInfo(message);
             msg(message, "info");
+        };
+        let oldDebug = console.debug;
+        console.debug = (message) => {
+            oldDebug(message);
+            msg(message, "debug");
         };
         let oldError = console.error;
         console.error = (message) => {
-            oldLog(message);
+            oldError(message);
             msg(message, "error");
         };
         let oldWarn = console.warn;
         console.warn = (message) => {
-            oldLog(message);
+            oldWarn(message);
             msg(message, "warn");
         };
         </script>

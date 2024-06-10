@@ -69,6 +69,7 @@ function onloadsuccess(arraybuffer, file) {
     }
 
     console.log("Loaded!");
+    console.debug()
 }
 
 function onloadwrongformat() {

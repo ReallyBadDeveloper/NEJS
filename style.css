@@ -81,6 +81,10 @@ body * {
   color: rgb(83, 83, 83);
 }
 
+.log-type-debug {
+  color: rgb(58, 58, 58);
+}
+
 .log-type-error {
   color: rgb(202, 37, 37);
 }
