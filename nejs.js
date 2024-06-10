@@ -28,9 +28,9 @@ document.getElementById("filetoload").addEventListener("change", ev=>{
 });
 
 const nametableModes = Object.freeze({
-    HORIZONTAL_MIRROR: Symbol("Horizontal Mirror"),
-    VERTICAL_MIRROR: Symbol("Vertical Mirror"),
-    FOUR_SCREEN: Symbol("Four Screen")
+    HORIZONTAL_MIRROR: "HORIZONTAL_MIRROR",
+    VERTICAL_MIRROR: "VERTICAL_MIRROR",
+    FOUR_SCREEN: "FOUR_SCREEN"
 });
 
 let loadedData = null;
