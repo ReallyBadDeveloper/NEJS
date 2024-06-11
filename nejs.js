@@ -66,16 +66,16 @@ function onloadsuccess(arraybuffer, file) {
 
     let trainer = null;
     if (hasTrainer) {
-        trainer = new DataView(pos, 512)
+        trainer = new DataView(arraybuffer, pos, 512)
         pos += 512
     }
 
-    let PRGROM = new DataView(pos, 16384 * PRGROMsize);
+    let PRGROM = new DataView(arraybuffer, pos, 16384 * PRGROMsize);
     pos += 16384 * PRGROMsize;
 
     let CHRROM = null;
     if (!usesCHRRAM) {
-        CHRROM = new DataView(pos, 8192 * CHRROMsize);
+        CHRROM = new DataView(arraybuffer, pos, 8192 * CHRROMsize);
         pos += 8192 * CHRROMsize;
     }
 
@@ -95,6 +95,9 @@ function onloadsuccess(arraybuffer, file) {
 
     console.log("Loaded!");
     console.debug(JSON.stringify(loadedData, null, 4));
+    if (pos != arraybuffer.byteLength) {
+        console.error("Not all data loaded; format could be unsupported");
+    }
 }
 
 function onloadwrongformat() {

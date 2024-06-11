@@ -59,6 +59,9 @@
             oldError(message);
             msg(message, "error");
         };
+        window.onerror = function(message, source, lineno, colno, error) {
+            msg(error.stack, "error");
+        }
         let oldWarn = console.warn;
         console.warn = (message) => {
             oldWarn(message);
