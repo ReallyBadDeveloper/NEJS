@@ -79,11 +79,11 @@ body * {
 }
 
 .log-type-info {
-    color: rgb(83, 83, 83);
+    color: rgb(198, 198, 198);
 }
 
 .log-type-debug {
-    color: rgb(58, 58, 58);
+    color: rgb(145, 145, 145);
 }
 
 .log-type-error {
@@ -104,13 +104,13 @@ body * {
   transform: translate(45%, 65%);
   background-size: cover;
   opacity: 50%;
-  transition: all 1.5s;
+  transition: all 0.5s;
 }
 
 .skrompt:hover {
     height: 192px;
     width: 192px;
-    transform: translate(15%, 25%);
+    transform: translate(0%, 0%);
     opacity: 100%;
 }
 
